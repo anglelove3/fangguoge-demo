@@ -3,9 +3,21 @@
 > 一个关于"分手之后"的 2D 半开放叙事游戏。
 > 16 章总案，已实装 13 章；点哪儿都有回应，微信、台球、夜摊、骑行都是真能玩的东西。
 
-**[⬇ 下载最新试玩版](../../releases/latest)**
+**[⬇ 直接下载（zip，约 310 MB）](https://github.com/anglelove3/fangguoge-demo/releases/latest/download/fangguoge-demo-win64.zip)**
 
-Windows 10/11 · 约 300 MB · 解压即玩，无需安装
+Windows 10/11 64 位 · 解压即玩，无需安装 · 无需 Godot
+
+<details>
+<summary><b>第一次运行被 Windows 拦住了？点这里（30 秒解决）</b></summary>
+
+这个 exe 没有买代码签名证书，Windows 首次运行会弹蓝色窗口「Windows 已保护你的电脑」：
+
+1. 点窗口里的 **「更多信息」**
+2. 点右下角 **「仍要运行」**
+
+杀软误报同理，添加信任即可。程序不会联网上传任何东西，存档只在 `%APPDATA%\Godot\app_userdata\` 下。
+
+</details>
 
 ![标题页](screenshots/01_title.jpg)
 ![天平分屏](screenshots/02_balance.jpg)
