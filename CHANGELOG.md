@@ -1353,3 +1353,36 @@
 
   → 稳定态全部 ≥ 90fps，没有"持续掉帧"的章节；体感卡顿来自**进章头 1～2 秒的一次性加载/首帧着色器**
   和个别大停顿（160～250ms，进章瞬间）。已把天平重绘降频（静止时 30fps），台球空闲跳过重绘。
+
+---
+
+## 2026-10-18 深夜（五）· 发版基建：试玩仓 + 导出修复
+
+### 修：导出必崩的真因
+
+- **`FangGuogeGame.sln` 被 .gitignore 忽略**（`*.sln`），而 mono 导出的 `dotnet publish` 需要它——
+  没有解决方案文件时导出"成功"但没打进任何 C# 程序集，双击就是**闪退（SIGSEGV）**。
+  现在 `.sln` 入库，并在 `.gitignore` 里注明原因。
+- **导出包从 771 MB 瘦到 425 MB**：`export_presets.cfg` 的 `exclude_filter` 加上
+  `test/*, docs/*, .workbuddy/*, *.md`——之前把 `test/shots` 里 590 MB 的截图全打进了包里。
+
+### 新：试玩仓（方案 A）
+
+- 新仓 **`anglelove3/fangguoge-demo`**（public）：只放 README / 截图 / CHANGELOG，
+  下载全走 Releases；源码仍在 `fangguoge-game`，不产生"两份代码"。
+- 首版 **v1.4.0** 已发：`fangguoge-demo-v1.4.0-win64.zip`（309 MB，exe + 说明.txt），
+  附 SHA256。实测：解压后可进主菜单、正常退出。
+- `tools/release.py`：一条命令完成 导出 → 压 zip → 算 SHA256 → 发 Release → 清理旧版：
+
+```
+python tools/release.py --version v1.4.1
+```
+
+### 发版体验三处小改（2026-10-18 深夜）
+
+1. **包名固定为 `fangguoge-demo-win64.zip`**（去掉版本号）——
+   直链永远是 `.../releases/latest/download/fangguoge-demo-win64.zip`，
+   以后发新版，简历/邮件里那条链接**不用改**。v1.4.0 已按新名重挂（旧的带版本号资产已删）。
+2. **试玩仓 README 顶部改成"直接下载"**，并加了一个折叠块「第一次运行被 Windows 拦住了？点这里」
+   ——未签名 exe 会被 SmartScreen 拦，写清"更多信息 → 仍要运行"，HR 自己就能过。
+3. **`tools/release.py` 发版后自动把 CHANGELOG 同步到试玩仓**，两边的更新日志不会再走偏。
