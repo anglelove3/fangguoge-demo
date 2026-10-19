@@ -7,6 +7,8 @@
 
 Windows 10/11 64 位 · 解压即玩，无需安装 · 无需 Godot
 
+**[▶ 看实机演示（B 站，28 分钟）](https://www.bilibili.com/video/BV1ghnE64EoG/)** ｜ [《葛行舟》6 分钟实机](https://www.bilibili.com/video/BV1ghnE64EEu/) ｜ [B 站空间 · 土狗-318](https://space.bilibili.com/411053613)
+
 <details>
 <summary><b>第一次运行被 Windows 拦住了？点这里（30 秒解决）</b></summary>
 
